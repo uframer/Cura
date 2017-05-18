@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Ultimaker B.V.
+# Copyright (c) 2017 Ultimaker B.V.
 # Cura is released under the terms of the AGPLv3 or higher.
 
 import os
@@ -22,6 +22,8 @@ from . import GlobalStack
 from .ContainerManager import ContainerManager
 from .ExtruderManager import ExtruderManager
 
+from cura.CuraApplication import CuraApplication
+
 from UM.i18n import i18nCatalog
 catalog = i18nCatalog("cura")
 
@@ -40,6 +42,14 @@ class CuraContainerRegistry(ContainerRegistry):
         # Note: Intentional check with type() because we want to ignore subclasses
         if type(container) == ContainerStack:
             container = self._convertContainerStack(container)
+
+        if isinstance(container, InstanceContainer) and type(container) != type(self.getEmptyInstanceContainer()):
+            #Check against setting version of the definition.
+            required_setting_version = CuraApplication.SettingVersion
+            actual_setting_version = int(container.getMetaDataEntry("setting_version", default = 0))
+            if required_setting_version != actual_setting_version:
+                Logger.log("w", "Instance container {container_id} is outdated. Its setting version is {actual_setting_version} but it should be {required_setting_version}.".format(container_id = container.getId(), actual_setting_version = actual_setting_version, required_setting_version = required_setting_version))
+                return #Don't add.
 
         super().addContainer(container)
 

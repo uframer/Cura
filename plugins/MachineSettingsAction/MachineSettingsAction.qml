@@ -16,23 +16,13 @@ Cura.MachineAction
     property var extrudersModel: Cura.ExtrudersModel{}
     property int extruderTabsCount: 0
 
-    Component.onCompleted:
+    Connections
     {
-        // Populate extruder tabs after a short delay, because otherwise the tabs that are added when
-        // the dialog is created are stuck.
-        extruderTabsCountDelay.start();
-    }
-
-    Timer
-    {
-        id: extruderTabsCountDelay
-        repeat: false
-        interval: 1
-
-        onTriggered:
+        target: base.extrudersModel
+        onModelChanged:
         {
-            var extruderCount = parseInt(machineExtruderCountProvider.properties.value);
-            base.extruderTabsCount = (extruderCount > 1) ? extruderCount : 0;
+            var extruderCount = base.extrudersModel.rowCount();
+            base.extruderTabsCount = extruderCount > 1 ? extruderCount : 0;
         }
     }
 
@@ -46,7 +36,6 @@ Cura.MachineAction
         onAccepted: manager.onFinishAction()
         onRejected: manager.onFinishAction()
         onClosing: manager.onFinishAction()
-        onVisibilityChanged: extruderTabsCountDelay.start()
     }
 
     anchors.fill: parent;
@@ -352,7 +341,6 @@ Cura.MachineAction
                                     sourceComponent: numericTextFieldWithUnit
                                     property var propertyProvider: gantryHeightProvider
                                     property string unit: catalog.i18nc("@label", "mm")
-                                    property bool forceUpdateOnChange: false
                                 }
 
                                 Item { width: UM.Theme.getSize("default_margin").width; height: UM.Theme.getSize("default_margin").height }
@@ -380,14 +368,9 @@ Cura.MachineAction
                                         }
                                     }
                                     currentIndex: machineExtruderCountProvider.properties.value - 1
-                                    Component.onCompleted:
-                                    {
-                                        //manager.setMachineExtruderCount(1);
-                                    }
                                     onActivated:
                                     {
                                         manager.setMachineExtruderCount(index + 1);
-                                        base.extruderTabsCount = (index > 0) ? index + 1 : 0;
                                     }
                                 }
 
@@ -401,7 +384,6 @@ Cura.MachineAction
                                     sourceComponent: numericTextFieldWithUnit
                                     property var propertyProvider: materialDiameterProvider
                                     property string unit: catalog.i18nc("@label", "mm")
-                                    property bool forceUpdateOnChange: false
                                 }
                                 Label
                                 {
@@ -415,7 +397,6 @@ Cura.MachineAction
                                     sourceComponent: numericTextFieldWithUnit
                                     property var propertyProvider: machineNozzleSizeProvider
                                     property string unit: catalog.i18nc("@label", "mm")
-                                    property bool forceUpdateOnChange: false
                                 }
                             }
                         }
@@ -566,7 +547,6 @@ Cura.MachineAction
                                 sourceComponent: numericTextFieldWithUnit
                                 property var propertyProvider: extruderNozzleSizeProvider
                                 property string unit: catalog.i18nc("@label", "mm")
-                                property bool forceUpdateOnChange: false
                             }
 
                             Label
@@ -580,6 +560,7 @@ Cura.MachineAction
                                 property var propertyProvider: extruderOffsetXProvider
                                 property string unit: catalog.i18nc("@label", "mm")
                                 property bool forceUpdateOnChange: true
+                                property bool allowNegative: true
                             }
                             Label
                             {
@@ -592,6 +573,7 @@ Cura.MachineAction
                                 property var propertyProvider: extruderOffsetYProvider
                                 property string unit: catalog.i18nc("@label", "mm")
                                 property bool forceUpdateOnChange: true
+                                property bool allowNegative: true
                             }
                         }
 
@@ -671,17 +653,21 @@ Cura.MachineAction
         Item {
             height: textField.height
             width: textField.width
+
+            property bool _allowNegative: (typeof(allowNegative) === 'undefined') ? false : allowNegative
+            property bool _forceUpdateOnChange: (typeof(forceUpdateOnChange) === 'undefined') ? false: forceUpdateOnChange
+
             TextField
             {
                 id: textField
                 text: (propertyProvider.properties.value) ? propertyProvider.properties.value : ""
-                validator: RegExpValidator { regExp: /[0-9\.]{0,6}/ }
+                validator: RegExpValidator { regExp: _allowNegative ? /-?[0-9\.]{0,6}/ : /[0-9\.]{0,6}/ }
                 onEditingFinished:
                 {
                     if (propertyProvider && text != propertyProvider.properties.value)
                     {
                         propertyProvider.setPropertyValue("value", text);
-                        if(forceUpdateOnChange)
+                        if(_forceUpdateOnChange)
                         {
                             var extruderIndex = ExtruderManager.activeExtruderIndex;
                             manager.forceUpdate();

@@ -152,6 +152,7 @@ UM.PreferencesPage
                             append({ text: "Suomi", code: "fi" })
                             append({ text: "Français", code: "fr" })
                             append({ text: "Italiano", code: "it" })
+                            append({ text: "日本語", code: "jp" })
                             append({ text: "Nederlands", code: "nl" })
                             append({ text: "Português do Brasil", code: "ptbr" })
                             append({ text: "Русский", code: "ru" })
@@ -322,7 +323,7 @@ UM.PreferencesPage
             UM.TooltipArea {
                 width: childrenRect.width;
                 height: childrenRect.height;
-                text: catalog.i18nc("@info:tooltip","Moves the camera so the model is in the center of the view when an model is selected")
+                text: catalog.i18nc("@info:tooltip","Moves the camera so the model is in the center of the view when a model is selected")
 
                 CheckBox
                 {
