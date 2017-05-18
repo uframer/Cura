@@ -219,6 +219,7 @@ UM.PreferencesPage
 
                         Component.onCompleted: {
                             append({ text: catalog.i18nc("@item:inlistbox", "Ultimaker"), code: "cura" })
+                            append({ text: catalog.i18nc("@item:inlistbox", "Inverted"), code: "inverted" })
                         }
                     }
 
