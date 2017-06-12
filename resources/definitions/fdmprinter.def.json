@@ -5448,6 +5448,18 @@
                     "enabled": "sanding_enabled",
                     "limit_to_extruder": "top_bottom_extruder_nr",
                     "settable_per_mesh": true
+                },
+                "sanding_passes":
+                {
+                    "label": "Sanding Passes",
+                    "description": "The number of times to pass over the surface with sanding. More passes make the surface smoother but takes more time.",
+                    "type": "int",
+                    "default_value": 2,
+                    "minimum_value": 1,
+                    "maximum_value_warning": 4,
+                    "enabled": "sanding_enabled",
+                    "limit_to_extruder": "top_bottom_extruder_nr",
+                    "settable_per_mesh": true
                 }
             }
         },
