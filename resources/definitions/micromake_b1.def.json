@@ -1,0 +1,76 @@
+{
+    "id": "micromake_b1",
+    "version": 2,
+    "name": "Micromake B1",
+    "inherits": "fdmprinter",
+    "metadata": {
+        "author": "Ye Jiao",
+        "category": "Other",
+        "manufacturer": "Micromake",
+        "file_formats": "text/x-gcode",
+        "visible": true,
+        "first_start_actions": ["BedLevel"],
+        "supported_actions": ["BedLevel", "UpgradeFirmware"]
+    },
+
+    "overrides": {
+        "machine_name": {
+            "default_value": "Micromake B1"
+        },
+        "machine_width": {
+            "default_value": 210
+        },
+        "machine_height": {
+            "default_value": 160
+        },
+        "machine_depth": {
+            "default_value": 270
+        },
+        "machine_gcode_flavor": {
+            "default_value": "RepRap (Marlin/Sprinter)"
+        },
+        "material_diameter": {
+            "default_value": 1.75
+        },
+        "layer_height": {
+            "default_value": 0.2
+        },
+        "speed_print": {
+            "default_value": 20
+        },
+        "material_print_temperature": {
+            "default_value": 210
+        },
+        "speed_travel": {
+            "default_value": 40
+        },
+        "cool_min_layer_time": {
+            "default_value": 20
+        },
+        "top_bottom_thickness": {
+            "default_value": 0.8
+        },
+        "wall_thickness": {
+            "default_value": 1.2
+        },
+        "WARNING": "the following settings should be set according to the metrics of B1 related components",
+        "gantry_height": {
+            "default_value": 55
+        },
+        "machine_head_with_fans_polygon":
+        {
+            "default_value": [
+                [ -75, 35 ],
+                [ -75, -18 ],
+                [ 18, 35 ],
+                [ 18, -18 ]
+            ]
+        },
+        "machine_start_gcode": {
+            "default_value": ";Sliced at: {day} {date} {time}\n;Basic settings: Layer height: {layer_height} Walls: {wall_thickness} Fill: {fill_density}\n;Print time: {print_time}\n;Filament used: {filament_amount}m {filament_weight}g\n;Filament cost: {filament_cost}\n;M190 S{print_bed_temperature} ;Uncomment to add your own bed temperature line\n;M109 S{print_temperature} ;Uncomment to add your own temperature line\nG21        ;metric values\nG90        ;absolute positioning\nM107       ;start with the fan off\nG28        ;move to endstops\nG92 E0                  ;zero the extruded length\nG1 F200 E3              ;extrude 3mm of feed stock\nG92 E0                  ;zero the extruded length again\nG1 F{travel_speed}\n;Put printing message on LCD screen\nM117 Printing..."
+         },
+        "machine_end_gcode": {
+            "default_value": "M104 S0                     ;extruder heater off\nM140 S0                     ;heated bed heater off (if you have it)\nG0 Z150                     ;it cannot reach max height 160 as advertised, have to lift the extruder first otherwise we will destroy what we just built\nG0 X0                       ;home x\nG0 Y0                       ;home y\nM84                         ;steppers off to save power"
+        }
+    }
+}
