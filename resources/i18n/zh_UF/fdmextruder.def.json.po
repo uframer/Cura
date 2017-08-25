@@ -1,0 +1,185 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Uranium json setting files\n"
+"Report-Msgid-Bugs-To: http://github.com/ultimaker/uranium\n"
+"POT-Creation-Date: 2017-04-06 08:19+0800\n"
+"PO-Revision-Date: 2017-04-07 02:01+0800\n"
+"Last-Translator: Ye Jiao <uframer@gmail.com>\n"
+"Language-Team: Ye Jiao <uframer@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_UF\n"
+
+#: fdmextruder.def.json
+msgctxt "machine_settings label"
+msgid "Machine"
+msgstr "机型"
+
+#: fdmextruder.def.json
+msgctxt "machine_settings description"
+msgid "Machine specific settings"
+msgstr "机型专用设置"
+
+#: fdmextruder.def.json
+msgctxt "extruder_nr label"
+msgid "Extruder"
+msgstr "挤出头"
+
+#: fdmextruder.def.json
+msgctxt "extruder_nr description"
+msgid "The extruder train used for printing. This is used in multi-extrusion."
+msgstr "用于打印的挤出头滑车。它用于多个挤出头的情况。"
+
+#: fdmextruder.def.json
+msgctxt "machine_nozzle_offset_x label"
+msgid "Nozzle X Offset"
+msgstr "喷口X偏移"
+
+#: fdmextruder.def.json
+msgctxt "machine_nozzle_offset_x description"
+msgid "The x-coordinate of the offset of the nozzle."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_nozzle_offset_y label"
+msgid "Nozzle Y Offset"
+msgstr "喷口Y偏移"
+
+#: fdmextruder.def.json
+msgctxt "machine_nozzle_offset_y description"
+msgid "The y-coordinate of the offset of the nozzle."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_code label"
+msgid "Extruder Start G-Code"
+msgstr "挤出头启动G-Code"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_code description"
+msgid "Start g-code to execute whenever turning the extruder on."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_abs label"
+msgid "Extruder Start Position Absolute"
+msgstr "挤出头绝对起始位置"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_abs description"
+msgid ""
+"Make the extruder starting position absolute rather than relative to the "
+"last-known location of the head."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_x label"
+msgid "Extruder Start Position X"
+msgstr "挤出头起始位置X"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_x description"
+msgid "The x-coordinate of the starting position when turning the extruder on."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_y label"
+msgid "Extruder Start Position Y"
+msgstr "挤出头起始位置Y"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_start_pos_y description"
+msgid "The y-coordinate of the starting position when turning the extruder on."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_code label"
+msgid "Extruder End G-Code"
+msgstr "挤出头结束G-Code"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_code description"
+msgid "End g-code to execute whenever turning the extruder off."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_abs label"
+msgid "Extruder End Position Absolute"
+msgstr "挤出头绝对结束为止"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_abs description"
+msgid ""
+"Make the extruder ending position absolute rather than relative to the last-"
+"known location of the head."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_x label"
+msgid "Extruder End Position X"
+msgstr "挤出头结束位置X"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_x description"
+msgid "The x-coordinate of the ending position when turning the extruder off."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_y label"
+msgid "Extruder End Position Y"
+msgstr "挤出头结束为止Y"
+
+#: fdmextruder.def.json
+msgctxt "machine_extruder_end_pos_y description"
+msgid "The y-coordinate of the ending position when turning the extruder off."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_z label"
+msgid "Extruder Prime Z Position"
+msgstr "挤出头主位置Z"
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_z description"
+msgid ""
+"The Z coordinate of the position where the nozzle primes at the start of "
+"printing."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "platform_adhesion label"
+msgid "Build Plate Adhesion"
+msgstr "打印平台粘附"
+
+#: fdmextruder.def.json
+msgctxt "platform_adhesion description"
+msgid "Adhesion"
+msgstr "粘附"
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_x label"
+msgid "Extruder Prime X Position"
+msgstr "挤出头主位置X"
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_x description"
+msgid ""
+"The X coordinate of the position where the nozzle primes at the start of "
+"printing."
+msgstr ""
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_y label"
+msgid "Extruder Prime Y Position"
+msgstr "挤出头主位置Y"
+
+#: fdmextruder.def.json
+msgctxt "extruder_prime_pos_y description"
+msgid ""
+"The Y coordinate of the position where the nozzle primes at the start of "
+"printing."
+msgstr ""

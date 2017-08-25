@@ -120,6 +120,7 @@ UM.PreferencesPage
                             append({ text: "Português do Brasil", code: "ptbr" })
                             append({ text: "Русский", code: "ru" })
                             append({ text: "Türkçe", code: "tr" })
+                            append({ text: "UF中文", code: "zh_UF" })
                         }
                     }
 
